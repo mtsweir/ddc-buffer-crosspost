@@ -2,6 +2,26 @@
 
 When the editor's Facebook post goes out through Buffer, you run this script. It takes the latest sent Facebook post, pulls the article link out of it, grabs that article's lead image, and creates a matching Instagram post — through Buffer itself. Every run is logged to a Google Sheet, which also stops the same article being posted twice.
 
+## Commands
+
+Run these from the project folder. In each new terminal, activate the environment first:
+
+```bash
+source .venv/bin/activate        # Windows: .venv\Scripts\activate
+```
+
+| Command | What it does |
+|---|---|
+| `python mirror_to_instagram.py` | Dry run (the default). Does everything except post, and logs `DRY_RUN_OK` |
+| `python mirror_to_instagram.py --live` | Posts for real: Instagram, plus TikTok if `TIKTOK_CHANNEL_ID` is set |
+| `python mirror_to_instagram.py --only instagram` | Dry run for Instagram only (add `--live` to post) |
+| `python mirror_to_instagram.py --only tiktok` | Dry run for TikTok only (add `--live` to post) |
+| `python mirror_to_instagram.py --setup` | Lists your Buffer organisation and channel IDs for `.env` |
+| `python mirror_to_instagram.py --inspect` | Shows the raw latest Facebook post from Buffer, for when the link isn't found |
+| `python mirror_to_instagram.py --help` | Lists all options |
+
+First-time install is in Step 1 below.
+
 ## How it works (and one change from our plan)
 
 Buffer's current API can create Instagram posts directly, so the script never talks to Meta/Instagram itself. That means no Facebook developer app, no Graph API, and no 60-day Instagram token to keep refreshing — Buffer handles the Instagram connection you've already set up in its dashboard.
