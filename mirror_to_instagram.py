@@ -466,7 +466,8 @@ def build_branded_image(image_bytes, headline, platform="instagram"):
         draw.text((box_x, ty), text, font=f, fill=colour)
 
     out = io.BytesIO()
-    canvas.save(out, "JPEG", quality=90, optimize=True)
+    # Full colour resolution (no chroma subsampling) keeps headline edges crisp.
+    canvas.save(out, "JPEG", quality=95, subsampling=0, optimize=True)
     return out.getvalue()
 
 
