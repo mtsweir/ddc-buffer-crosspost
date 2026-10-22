@@ -166,4 +166,3 @@ Only `POSTED` rows count as duplicates, so dry runs and failures never block a r
 ## Possible next steps
 
 - **Trigger from your phone:** put the script in a private GitHub repo and run it with a GitHub Actions "Run workflow" button, which works from the GitHub mobile app. No computer needs to be on.
-- **TikTok:** TikTok isn't in the platform list in Buffer's API guide right now, so check Buffer's docs again when we get to it; otherwise it would need TikTok's own posting API.
